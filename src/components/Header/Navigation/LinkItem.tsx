@@ -30,6 +30,9 @@ interface IProps {
  */
 const LinkItem = ({ linkTo, text, icon, forDrawer }: IProps) => {
 
+  const pathname = usePathname();
+  const isRoot = pathname === '/';
+
   // component for drawer navigation 
   if (forDrawer) {
     return (
@@ -53,9 +56,6 @@ const LinkItem = ({ linkTo, text, icon, forDrawer }: IProps) => {
   }
 
   // component for navbar
-  const pathname = usePathname();
-  const isRoot = pathname === '/';
-
   return (
     <ListItemButton
       href={linkTo}

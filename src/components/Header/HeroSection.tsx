@@ -24,7 +24,7 @@ const HeroSection = () => {
         sx={style.primaryText}
         variant='h1'
       >
-        Let's Bring The Spring To Your home
+        {"Let's Bring The Spring To Your home"}
       </Typography>
 
       <Button
