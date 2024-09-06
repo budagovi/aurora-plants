@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: #225c44b5;
+  color: #f7f5ff;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+  /* 1b3c35 004F44 */
+  --greyshGreen: #dce1de;
+  --red: #db4444;
+  --bodyBg: #F7F8FA;
+  --body: #F7F8FA;
+  --black: #272727;
+  --grey: #808080;
+  --darkGrey: #5a5a5a;
+  --placeholderColor: #9ca09d;
+  --formOverlay: rgba(93, 93, 93, 0.349);
+
+  --fore: #f0f0f0;
+  --foreHover: #cacaca;
+  --foreDark: #4d4d4d;
+
+  --greyBorder: 1px solid #b6b6b6;
+  --contentBackground: #ffffffc1;
+  --boxShadow: #8a8a8a;
+}

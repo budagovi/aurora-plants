@@ -34,3 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# lib files
+/src/lib/component-template.tsx
+/src/lib/tasks.txt
