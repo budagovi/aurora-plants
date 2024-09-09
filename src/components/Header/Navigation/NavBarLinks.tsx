@@ -17,7 +17,7 @@ import { usePathname } from "next/navigation";
 // --- types
 import type { SxPropsMap } from "@/lib/types";
 // --- constants
-import { hoverTransition, NAV_DRAWER_BREAKPOINT } from "@/lib/constants";
+import { HOVER_TRANSITION, NAV_DRAWER_BREAKPOINT } from "@/lib/constants";
 // --- components
 import LinkItem from "./LinkItem";
 
@@ -33,7 +33,7 @@ const NavBarLinks = () => {
   const iconStyle: SxProps = {
     width: 30,
     height: 30,
-    transition: `color ${hoverTransition}`,
+    transition: `color ${HOVER_TRANSITION}`,
     color: isRoot ? 'white.main' : 'primary.main',
     '&:hover': {
       color: isRoot ? 'grey.300' : 'primary.light',

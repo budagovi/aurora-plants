@@ -3,13 +3,22 @@
  */
 export const NAV_DRAWER_BREAKPOINT = 640;
 
+// -=-=-=-=- Style-Related  -=-=-=-=-
 
 /**
- * Style-specific constant properties
+  ```ts
+  const style: SxProps = {
+   textShadow: TEXT_SHADOW
+  }
+  ```
  */
-export const textShadow = '0px 2px 3px rgba(0, 0, 0, 0.35)';
+export const TEXT_SHADOW = '0px 2px 3px rgba(0, 0, 0, 0.35)';
 
 /**
- * hover transition
+  ```ts
+  const style: SxProps = {
+   transition: `color ${HOVER_TRANSITION}`,
+  }
+  ```
  */
-export const hoverTransition = '250ms cubic-bezier(0.4, 0, 0.2, 1)';
+export const HOVER_TRANSITION = '250ms cubic-bezier(0.4, 0, 0.2, 1)';

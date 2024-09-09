@@ -1,5 +1,5 @@
 // --- types
-import { textShadow } from '@/lib/constants';
+import { TEXT_SHADOW } from '@/lib/constants';
 import type { SxPropsMap } from '@/lib/types';
 // --- mui
 import { Button, Stack, Typography } from '@mui/material';
@@ -53,7 +53,7 @@ const style: SxPropsMap = {
     justifyContent: 'center',
     textAlign: 'center',
     color: 'common.white',
-    textShadow: textShadow
+    textShadow: TEXT_SHADOW
   },
 
   secondaryText: {

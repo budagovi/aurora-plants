@@ -28,6 +28,7 @@ const Title = () => {
       >
         <Typography
           variant='h2'
+          component='span'
           color={isRoot ? 'white.main' : 'primary.main'}
           sx={style.text}
         >

@@ -1,14 +1,17 @@
 'use client'
+
 // --- types
 import type { SxPropsMap } from '@/lib/types';
 // --- mui 
-import { IconButton, Drawer } from '@mui/material';
+import { IconButton, Drawer, SxProps } from '@mui/material';
 // -- icons
 import MenuIcon from '@mui/icons-material/Menu';
 // --- react api
 import { useState, useEffect } from 'react';
+// --- next api
+import { usePathname } from 'next/navigation';
 // --- constants
-import { NAV_DRAWER_BREAKPOINT } from '@/lib/constants'
+import { HOVER_TRANSITION, NAV_DRAWER_BREAKPOINT } from '@/lib/constants'
 // --- components
 import DrawerLinks from './DrawerLinks';
 
@@ -39,6 +42,20 @@ const DrawerNavigation = () => {
     };
   }, []);
 
+  const pathname = usePathname();
+  const isRoot = pathname === '/';
+
+  // route-dependent styling for icon-buttons
+  const iconStyle: SxProps = {
+    width: 30,
+    height: 30,
+    transition: `color ${HOVER_TRANSITION}`,
+    color: isRoot ? 'white.main' : 'primary.main',
+    '&:hover': {
+      color: isRoot ? 'grey.300' : 'primary.light',
+    }
+  }
+
   return (
     <>
 
@@ -48,7 +65,7 @@ const DrawerNavigation = () => {
         onClick={toggleDrawer(true)}
         sx={style.trigger}
       >
-        <MenuIcon sx={style.icon} fontSize='large' />
+        <MenuIcon sx={iconStyle} fontSize='large' />
       </IconButton>
 
       {/* -=-=-=-=- Drawer -=-=-=-=- */}
@@ -76,10 +93,6 @@ const style: SxPropsMap = {
     [`@media (max-width: ${NAV_DRAWER_BREAKPOINT}px)`]: {
       display: 'inline-flex',
     }
-  },
-
-  icon: {
-    color: 'primary.main'
   },
 
   drawer: {

@@ -1,7 +1,14 @@
-export default function Home() {
-  return (
-    <main>
+// --- ui
+import MaxWidthBox from "@/UI/MaxWidthBox";
+// --- components
+import Categories from "@/components/Home Page/CategoriesGrid";
 
-    </main>
+const RootPage = () => {
+  return (
+    <MaxWidthBox component='main' contentWrapper>
+      <Categories />
+    </MaxWidthBox>
   );
 }
+
+export default RootPage

@@ -29,7 +29,10 @@ import type { SxPropsMap } from "@/lib/types";
 const style: SxPropsMap = {
   wrapper: {
     width: '100%',
-    display: 'flex',
+    display: {
+      xs: 'none',
+      sm: 'flex'
+    },
     justifyContent: 'center',
     backgroundColor: 'primary.main',
     paddingBlock: 0.15,

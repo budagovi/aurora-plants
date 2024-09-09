@@ -28,7 +28,7 @@ export default MaxWidthBox;
 
 const style: SxPropsMap = {
   wrapper: {
-    width: 'min(100%, 1750px)',
+    width: 'min(100%, 1550px)',
     paddingInline: {
       xs: 0.5,
       md: 1

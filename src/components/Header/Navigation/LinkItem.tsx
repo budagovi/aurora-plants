@@ -3,7 +3,7 @@
 // --- types
 import type { SxPropsMap } from '@/lib/types';
 // --- constants
-import { hoverTransition } from '@/lib/constants';
+import { HOVER_TRANSITION } from '@/lib/constants';
 // --- mui
 import {
   ListItemButton,
@@ -118,7 +118,7 @@ const style: SxPropsMap = {
     '&:hover': {
       background: 'none',
       '& > span': {
-        transition: `color ${hoverTransition}`
+        transition: `color ${HOVER_TRANSITION}`
       }
     }
   },
