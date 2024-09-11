@@ -1,12 +1,14 @@
-// style
+// --- style
 import "../globals.css";
-// react api
+// --- react api
 import { ReactNode } from "react";
-// types
+// --- types
 import type { Metadata } from "next";
-// components
+// --- theme
 import ThemeRegistry from "@/lib/theme/ThemeRegistry";
+// --- components
 import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "Aurora Plants",
@@ -24,6 +26,7 @@ const RootLayout = ({ children }: Readonly<IProps>) => {
         <ThemeRegistry>
           <Header />
           {children}
+          <Footer />
         </ThemeRegistry>
       </body>
     </html>

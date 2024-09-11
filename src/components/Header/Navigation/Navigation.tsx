@@ -18,6 +18,7 @@ const Navigation = () => {
       <AppBar
         sx={style.appbar}
         elevation={0}
+        component='nav'
       >
         <Toolbar
           disableGutters

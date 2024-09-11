@@ -26,6 +26,7 @@ const serviceItemsList: IServiceItemProps[] = [
     text: 'We return money within 30 days',
   }
 ]
+
 /**
  * List of services provided by website
  */
@@ -37,6 +38,7 @@ const Services = () => {
         md: 'row',
       }}
       sx={style.wrapper}
+      component='section'
     >
       {
         serviceItemsList.map((i, idx) => <ServicesItem

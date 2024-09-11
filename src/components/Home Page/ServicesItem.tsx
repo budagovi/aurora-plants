@@ -11,6 +11,9 @@ export interface IProps {
   text: string
 }
 
+/**
+ * Styled Service item component
+ */
 const ServicesItem = ({ icon, title, text }: IProps) => {
   return (
     <Stack
@@ -107,8 +110,16 @@ const style: SxPropsMap = {
   textPrimary: {
     fontWeight: 700,
     textTransform: 'uppercase',
+    textAlign: {
+      xs: 'left',
+      md: 'center'
+    }
   },
   textSecondary: {
     color: 'grey.600',
+    textAlign: {
+      xs: 'left',
+      md: 'center'
+    }
   }
 }

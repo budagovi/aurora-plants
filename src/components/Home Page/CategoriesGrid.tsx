@@ -28,7 +28,7 @@ const CategoryItemsList: ICategoryItemProps[] = [
  */
 const CategoriesGrid = () => {
   return (
-    <Grid container sx={style.wrapper} >
+    <Grid container sx={style.wrapper} component='section' >
 
       {CategoryItemsList.slice(0, 3).map(i =>
         <CategoriesItem
