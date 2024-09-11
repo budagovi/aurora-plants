@@ -9,8 +9,8 @@ import { HOVER_TRANSITION } from '@/lib/constants';
 // -- icons
 import EastIcon from '@mui/icons-material/East';
 
-interface IProps {
-  individualStyle: SxProps<Theme>
+export interface IProps {
+  bgImgUrl: string
   linkTo: string,
   text: string
 }
@@ -18,9 +18,9 @@ interface IProps {
 /**
  * Individual item of categories grid
  */
-const CategoriesItem = ({ individualStyle, linkTo, text }: IProps) => {
+const CategoriesItem = ({ bgImgUrl, linkTo, text }: IProps) => {
   return (
-    <Grid item sx={[style.item, individualStyle] as SxProps<Theme>}>
+    <Grid item sx={{ ...style.item, backgroundImage: bgImgUrl }}>
       <ButtonBase
         sx={style.btn}
         href={linkTo}
