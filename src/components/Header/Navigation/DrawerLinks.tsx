@@ -33,21 +33,21 @@ const DrawerLinks = () => {
         linkTo='/store'
         text='store'
         icon={<StoreIcon />}
-        forDrawer
+        isDrawerItem
       />
 
       <LinkItem
         linkTo='/about'
         text='about'
         icon={<AssignmentIcon />}
-        forDrawer
+        isDrawerItem
       />
 
       <LinkItem
         linkTo='/contact'
         text='contact'
         icon={<MarkunreadIcon />}
-        forDrawer
+        isDrawerItem
       />
 
       <Divider sx={style.divider} />
@@ -56,14 +56,14 @@ const DrawerLinks = () => {
         linkTo='/cart'
         text='shopping cart'
         icon={<ShoppingCartRoundedIcon />}
-        forDrawer
+        isDrawerItem
       />
 
       <LinkItem
         linkTo='/profile'
         text='account'
         icon={<PersonRoundedIcon />}
-        forDrawer
+        isDrawerItem
       />
 
       <Divider sx={style.divider} />
@@ -72,17 +72,15 @@ const DrawerLinks = () => {
         linkTo='/sign-in'
         text='sign in'
         icon={<PersonRoundedIcon />}
-        forDrawer
+        isDrawerItem
       />
 
       {/* LOGOUT FUNCTIONALITY  ---------------------------- */}
       <ListItemButton
-        sx={style.listItem}
         href='/cart'
         LinkComponent={Link}
       >
         <Typography
-          sx={style.linkText}
           variant="body2"
           component='span'
         >
@@ -112,23 +110,6 @@ const style: SxPropsMap = {
     gap: {
       xs: 0.2,
       md: 0.3,
-    }
-  },
-
-  listButton: {
-    padding: 0,
-    '&:hover': {
-      backgroundColor: 'transparent',
-    }
-  },
-
-  listIcon: {
-    width: 28,
-    height: 28,
-    color: 'primary.main',
-    transition: 'color 250ms cubic-bezier(0.4, 0, 0.2, 1)',
-    '&:hover': {
-      color: 'primary.light',
     }
   },
 

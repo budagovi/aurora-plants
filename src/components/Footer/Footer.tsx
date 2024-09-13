@@ -59,11 +59,14 @@ const Footer = () => {
         >
           <MediaLinks />
         </LinksSection>
+
       </MaxWidthBox>
+
       <Typography variant='subtitle2' sx={style.copyright}>
         <CopyrightIcon />
         Copyright Aurora Plants 2024. All rights reserved
       </Typography>
+
     </Box>
   )
 }

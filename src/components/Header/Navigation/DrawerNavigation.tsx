@@ -8,12 +8,12 @@ import { IconButton, Drawer, SxProps } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 // --- react api
 import { useState, useEffect } from 'react';
-// --- next api
-import { usePathname } from 'next/navigation';
 // --- constants
 import { HOVER_TRANSITION, NAV_DRAWER_BREAKPOINT } from '@/lib/constants'
 // --- components
 import DrawerLinks from './DrawerLinks';
+// --- hooks
+import { useIsRootPage } from '@/lib/hooks/useIsRootPage';
 
 /**
  * Drawer Component with custom drawer functionality
@@ -42,19 +42,7 @@ const DrawerNavigation = () => {
     };
   }, []);
 
-  const pathname = usePathname();
-  const isRoot = pathname === '/';
-
-  // route-dependent styling for icon-buttons
-  const iconStyle: SxProps = {
-    width: 30,
-    height: 30,
-    transition: `color ${HOVER_TRANSITION}`,
-    color: isRoot ? 'white.main' : 'primary.main',
-    '&:hover': {
-      color: isRoot ? 'grey.300' : 'primary.light',
-    }
-  }
+  const isRoot = useIsRootPage();
 
   return (
     <>
@@ -65,7 +53,15 @@ const DrawerNavigation = () => {
         onClick={toggleDrawer(true)}
         sx={style.trigger}
       >
-        <MenuIcon sx={iconStyle} fontSize='large' />
+        <MenuIcon
+          sx={{
+            ...style.icon,
+            color: isRoot ? 'white.main' : 'primary.main',
+            '&:hover': {
+              color: isRoot ? 'grey.300' : 'primary.light',
+            }
+          }}
+          fontSize='large' />
       </IconButton>
 
       {/* -=-=-=-=- Drawer -=-=-=-=- */}
@@ -74,7 +70,6 @@ const DrawerNavigation = () => {
         open={isOpen}
         onClose={toggleDrawer(false)}
         anchor='right'
-        sx={style.drawer}
       >
         <DrawerLinks />
       </Drawer>
@@ -95,9 +90,9 @@ const style: SxPropsMap = {
     }
   },
 
-  drawer: {
-    '&:root': {
-      background: 'red'
-    }
-  }
+  icon: {
+    width: 30,
+    height: 30,
+    transition: `color ${HOVER_TRANSITION}`,
+  },
 }

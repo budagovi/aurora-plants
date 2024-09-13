@@ -25,6 +25,7 @@ const CategoriesItem = ({ bgImgUrl, linkTo, text }: IProps) => {
         sx={style.btn}
         href={linkTo}
         LinkComponent={Link}
+        aria-label={`Navigate to ${text}`}
       >
         <Typography
           variant='h4'

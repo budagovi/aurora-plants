@@ -6,39 +6,29 @@ import {
   IconButton,
   List,
   ListItem,
-  SxProps
+  SxProps,
+  Theme
 } from "@mui/material";
 // -- icons
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 // -- next api
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 // --- types
 import type { SxPropsMap } from "@/lib/types";
 // --- constants
 import { HOVER_TRANSITION, NAV_DRAWER_BREAKPOINT } from "@/lib/constants";
 // --- components
 import LinkItem from "./LinkItem";
+// --- hooks
+import { useIsRootPage } from "@/lib/hooks/useIsRootPage";
 
 /**
  *  List of navigation links for desktop version
  */
 const NavBarLinks = () => {
 
-  const pathname = usePathname();
-  const isRoot = pathname === '/';
-
-  // route-dependent styling for icon-buttons
-  const iconStyle: SxProps = {
-    width: 30,
-    height: 30,
-    transition: `color ${HOVER_TRANSITION}`,
-    color: isRoot ? 'white.main' : 'primary.main',
-    '&:hover': {
-      color: isRoot ? 'grey.300' : 'primary.light',
-    }
-  }
+  const isRoot = useIsRootPage();
 
   return (
     <List sx={style.list}>
@@ -63,13 +53,23 @@ const NavBarLinks = () => {
 
       <ListItem sx={style.listItem}>
         <IconButton sx={style.btn} >
-          <ShoppingCartRoundedIcon sx={iconStyle} />
+          <ShoppingCartRoundedIcon
+            sx={[
+              style.icon,
+              isRoot && style.iconRootPage
+            ] as SxProps<Theme>}
+          />
         </IconButton>
       </ListItem>
 
       <ListItem sx={style.listItem}>
         <IconButton sx={style.btn}>
-          <PersonRoundedIcon sx={iconStyle} />
+          <PersonRoundedIcon
+            sx={[
+              style.icon,
+              isRoot && style.iconRootPage
+            ] as SxProps<Theme>}
+          />
         </IconButton>
       </ListItem>
 
@@ -114,5 +114,22 @@ const style: SxPropsMap = {
 
   btn: {
     padding: 0
+  },
+
+  icon: {
+    width: 30,
+    height: 30,
+    transition: `color ${HOVER_TRANSITION}`,
+    color: 'primary.main',
+    '&:hover': {
+      color: 'primary.light',
+    }
+  },
+
+  iconRootPage: {
+    color: 'white.main',
+    '&:hover': {
+      color: 'grey.300',
+    }
   }
 }

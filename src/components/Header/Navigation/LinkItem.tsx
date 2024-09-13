@@ -8,12 +8,12 @@ import { HOVER_TRANSITION } from '@/lib/constants';
 import {
   ListItemButton,
   ListItemIcon,
-  SxProps,
   Typography
 } from '@mui/material';
 // --- next api
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+// --- hooks
+import { useIsRootPage } from '@/lib/hooks/useIsRootPage';
 // --- react api
 import { ReactNode } from 'react';
 
@@ -21,17 +21,16 @@ interface IProps {
   linkTo: string,
   text: string,
   icon?: ReactNode,
-  forDrawer?: boolean
+  isDrawerItem?: boolean
 }
 
 /**
  * Component for navigation list.  
  * Returns specific list item with certain styling, according whether it is for navbar or drawer navigation
  */
-const LinkItem = ({ linkTo, text, icon, forDrawer }: IProps) => {
+const LinkItem = ({ linkTo, text, icon, isDrawerItem: forDrawer }: IProps) => {
 
-  const pathname = usePathname();
-  const isRoot = pathname === '/';
+  const isRoot = useIsRootPage();
 
   // component for drawer navigation 
   if (forDrawer) {
@@ -97,7 +96,7 @@ const style: SxPropsMap = {
   },
 
   drawerLinkText: {
-    textWrap: 'nowrap',
+    whiteSpace: 'nowrap',
     color: 'primary.main',
     fontWeight: 700,
     textTransform: 'capitalize'
@@ -124,7 +123,7 @@ const style: SxPropsMap = {
   },
 
   navbarLinkText: {
-    textWrap: 'nowrap',
+    whiteSpace: 'nowrap',
     fontWeight: 700,
     textTransform: 'capitalize'
   },

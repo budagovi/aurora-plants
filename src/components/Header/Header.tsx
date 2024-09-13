@@ -1,42 +1,28 @@
 'use client'
 
 // -- mui
-import { Stack, SxProps } from "@mui/material";
+import { Stack, SxProps, Theme } from "@mui/material";
 // --- components
 import AnnouncementBar from "./AnnouncementBar";
 import Navigation from "./Navigation/Navigation";
 import HeroSection from "./HeroSection";
-// --- next api
-import { usePathname } from "next/navigation";
+// --- custom hooks
+import { useIsRootPage } from "@/lib/hooks/useIsRootPage";
+// --- types
+import { SxPropsMap } from "@/lib/types";
 
 /**
  * Wrapper component for Header segment children components
  */
 const Header = () => {
 
-  const pathname = usePathname();
-  const isRoot = pathname === '/';
-
-  // -=-=-=- style -=-=-=-
-
-  const wrapperStyle: SxProps = {
-    minHeight: isRoot ? '100dvh' : 0,
-    ...(isRoot && {
-      backgroundImage: "linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url('./assets/hero-section-image.jpg')",
-      backgroundPosition: 'bottom right',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover'
-    })
-  }
+  const isRoot = useIsRootPage();
 
   return (
     <Stack
-      direction='column'
       component='header'
-      alignItems='center'
-      sx={wrapperStyle}
+      sx={[style.wrapper, isRoot && style.rootPageWrapper] as SxProps<Theme>}
     >
-
       <AnnouncementBar />
       <Navigation />
       {isRoot && <HeroSection />}
@@ -45,3 +31,20 @@ const Header = () => {
 }
 
 export default Header;
+
+
+// -=-=-=- style -=-=-=-
+
+const style: SxPropsMap = {
+  wrapper: {
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  rootPageWrapper: {
+    minHeight: '100dvh',
+    backgroundImage: "linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url('./assets/hero-section-image.jpg')",
+    backgroundPosition: 'bottom right',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'
+  }
+}

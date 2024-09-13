@@ -16,7 +16,7 @@ interface IProps {
 }
 
 /**
- * Individual footer section
+ * Individual footer section with list of links
  */
 const LinksSection = ({ title, list, children }: IProps) => {
   return (
@@ -32,7 +32,8 @@ const LinksSection = ({ title, list, children }: IProps) => {
         {title}
       </Typography>
 
-      {list.map(i => <Typography
+      {list.map((i, idx) => <Typography
+        key={idx}
         variant='body2'
         component='span'
         sx={style.listItem}

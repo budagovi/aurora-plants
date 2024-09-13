@@ -10,10 +10,14 @@ interface IProps extends BoxProps {
 /**
  * Component for managing the main content container's maximum with
  */
-const MaxWidthBox = ({ children, sx, component, contentWrapper }: IProps) => {
+const MaxWidthBox = ({ children, sx, component = 'div', contentWrapper }: IProps) => {
   return (
     <Box
-      sx={[style.wrapper, sx, contentWrapper ? style.contentWrapper : null] as SxProps<Theme>}
+      sx={[
+        style.wrapper,
+        sx,
+        contentWrapper ? style.contentWrapper : undefined
+      ] as SxProps<Theme>}
       component={component}
     >
       {children}

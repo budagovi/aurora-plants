@@ -18,6 +18,7 @@ const ServicesItem = ({ icon, title, text }: IProps) => {
   return (
     <Stack
       sx={style.serviceItem}
+      aria-labelledby={`service-item-${title}`}
     >
       {cloneElement(icon, { sx: style.icon })}
       <Stack

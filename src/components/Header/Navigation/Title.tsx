@@ -6,15 +6,15 @@ import type { SxPropsMap } from '@/lib/types';
 import { Button, Typography, Box } from '@mui/material';
 // --- next api
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+// --- hooks
+import { useIsRootPage } from '@/lib/hooks/useIsRootPage';
 
 /**
  * Logo holder for navbar
  */
 const Title = () => {
 
-  const pathname = usePathname();
-  const isRoot = pathname === '/';
+  const isRoot = useIsRootPage();
 
   return (
     <Box
