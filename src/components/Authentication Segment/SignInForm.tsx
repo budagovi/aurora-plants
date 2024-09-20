@@ -84,7 +84,7 @@ const SignInForm = () => {
         variant='subtitle1'
         sx={style.signUpText}
       >
-        Don't have an account?
+        Don&apos;t have an account?
         <CustomLink
           linkTo='/sign-up'
         >
