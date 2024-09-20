@@ -18,17 +18,18 @@ import Link from "next/link";
 import type { SxPropsMap } from "@/lib/types";
 // --- constants
 import { HOVER_TRANSITION, NAV_DRAWER_BREAKPOINT } from "@/lib/constants";
+import { authRoutes } from "@/lib/auth/routes";
 // --- components
 import LinkItem from "./LinkItem";
 // --- hooks
-import { useIsRootPage } from "@/lib/hooks/useIsRootPage";
+import { useIsRouteMatch } from "@/hooks/useIsRouteMatch";
 
 /**
  *  List of navigation links for desktop version
  */
 const NavBarLinks = () => {
 
-  const isRoot = useIsRootPage();
+  const isRootOrAuth = useIsRouteMatch(['/', ...authRoutes]);
 
   return (
     <List sx={style.list}>
@@ -56,7 +57,7 @@ const NavBarLinks = () => {
           <ShoppingCartRoundedIcon
             sx={[
               style.icon,
-              isRoot && style.iconRootPage
+              isRootOrAuth && style.iconRootPage
             ] as SxProps<Theme>}
           />
         </IconButton>
@@ -67,7 +68,7 @@ const NavBarLinks = () => {
           <PersonRoundedIcon
             sx={[
               style.icon,
-              isRoot && style.iconRootPage
+              isRootOrAuth && style.iconRootPage
             ] as SxProps<Theme>}
           />
         </IconButton>
@@ -78,8 +79,8 @@ const NavBarLinks = () => {
           variant="contained"
           href='/sign-in'
           LinkComponent={Link}
-          color={isRoot ? 'white' : 'primary'}
-          sx={{ fontWeight: isRoot ? 700 : 500, textTransform: 'none' }}
+          color={isRootOrAuth ? 'white' : 'primary'}
+          sx={{ fontWeight: isRootOrAuth ? 700 : 500, textTransform: 'none' }}
         >
           Sign in
         </Button>

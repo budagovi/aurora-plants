@@ -7,14 +7,16 @@ import { Button, Typography, Box } from '@mui/material';
 // --- next api
 import Link from 'next/link';
 // --- hooks
-import { useIsRootPage } from '@/lib/hooks/useIsRootPage';
+import { useIsRouteMatch } from '@/hooks/useIsRouteMatch';
+// --- constants
+import { authRoutes } from '@/lib/auth/routes';
 
 /**
  * Logo holder for navbar
  */
 const Title = () => {
 
-  const isRoot = useIsRootPage();
+  const isRootOrAuth = useIsRouteMatch(['/', ...authRoutes]);
 
   return (
     <Box
@@ -29,7 +31,7 @@ const Title = () => {
         <Typography
           variant='h2'
           component='span'
-          color={isRoot ? 'white.main' : 'primary.main'}
+          color={isRootOrAuth ? 'white.main' : 'primary.main'}
           sx={style.text}
         >
           Aurora Plants

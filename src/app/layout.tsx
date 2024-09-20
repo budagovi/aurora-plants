@@ -4,11 +4,13 @@ import "../globals.css";
 import { ReactNode } from "react";
 // --- types
 import type { Metadata } from "next";
+import type { SxPropsMap } from "@/lib/types";
 // --- theme
 import ThemeRegistry from "@/lib/theme/ThemeRegistry";
 // --- components
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import { Stack } from "@mui/material";
 
 export const metadata: Metadata = {
   title: "Aurora Plants",
@@ -26,15 +28,27 @@ const RootLayout = ({ children }: Readonly<IProps>) => {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body>
+      <Stack
+        component='body'
+        direction='column'
+        sx={style.body}
+      >
         <ThemeRegistry>
           <Header />
           {children}
           <Footer />
         </ThemeRegistry>
-      </body>
+      </Stack>
     </html>
   );
 }
 
 export default RootLayout;
+
+
+const style: SxPropsMap = {
+  body: {
+    minHeight: '100dvh',
+    position: 'relative' // for auth segments' background
+  }
+}

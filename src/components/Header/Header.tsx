@@ -7,7 +7,7 @@ import AnnouncementBar from "./AnnouncementBar";
 import Navigation from "./Navigation/Navigation";
 import HeroSection from "./HeroSection";
 // --- custom hooks
-import { useIsRootPage } from "@/lib/hooks/useIsRootPage";
+import { useIsRouteMatch } from "@/hooks/useIsRouteMatch";
 // --- types
 import { SxPropsMap } from "@/lib/types";
 
@@ -16,7 +16,7 @@ import { SxPropsMap } from "@/lib/types";
  */
 const Header = () => {
 
-  const isRoot = useIsRootPage();
+  const isRoot = useIsRouteMatch();
 
   return (
     <Stack

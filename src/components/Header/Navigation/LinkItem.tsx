@@ -4,6 +4,7 @@
 import type { SxPropsMap } from '@/lib/types';
 // --- constants
 import { HOVER_TRANSITION } from '@/lib/constants';
+import { authRoutes } from '@/lib/auth/routes';
 // --- mui
 import {
   ListItemButton,
@@ -13,7 +14,7 @@ import {
 // --- next api
 import Link from 'next/link';
 // --- hooks
-import { useIsRootPage } from '@/lib/hooks/useIsRootPage';
+import { useIsRouteMatch } from '@/hooks/useIsRouteMatch';
 // --- react api
 import { ReactNode } from 'react';
 
@@ -28,12 +29,12 @@ interface IProps {
  * Component for navigation list.  
  * Returns specific list item with certain styling, according whether it is for navbar or drawer navigation
  */
-const LinkItem = ({ linkTo, text, icon, isDrawerItem: forDrawer }: IProps) => {
+const LinkItem = ({ linkTo, text, icon, isDrawerItem }: IProps) => {
 
-  const isRoot = useIsRootPage();
+  const isRootOrAuth = useIsRouteMatch(['/', ...authRoutes]);
 
   // component for drawer navigation 
-  if (forDrawer) {
+  if (isDrawerItem) {
     return (
       <ListItemButton
         sx={style.drawerListItem}
@@ -62,7 +63,7 @@ const LinkItem = ({ linkTo, text, icon, isDrawerItem: forDrawer }: IProps) => {
       sx={{
         ...style.navbarListItem,
         '&:hover > span': {
-          color: isRoot ? 'grey.300' : 'primary.dark'
+          color: isRootOrAuth ? 'grey.300' : 'primary.dark'
         }
       }}
     >
@@ -70,7 +71,7 @@ const LinkItem = ({ linkTo, text, icon, isDrawerItem: forDrawer }: IProps) => {
         sx={style.navbarLinkText}
         variant="body2"
         component='span'
-        color={isRoot ? 'white.main' : 'primary.main'}
+        color={isRootOrAuth ? 'white.main' : 'primary.main'}
       >
         {text}
       </Typography>

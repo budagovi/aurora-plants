@@ -4,7 +4,7 @@ import MaxWidthBox from "@/UI/MaxWidthBox";
 import Categories from "@/components/Home Page/CategoriesGrid";
 import Services from "@/components/Home Page/Services";
 
-const RootPage = () => {
+const RootSegment = () => {
   return (
     <MaxWidthBox component='main' contentWrapper>
       <Categories />
@@ -13,4 +13,4 @@ const RootPage = () => {
   );
 }
 
-export default RootPage
+export default RootSegment

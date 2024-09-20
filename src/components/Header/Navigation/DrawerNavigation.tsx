@@ -13,7 +13,7 @@ import { HOVER_TRANSITION, NAV_DRAWER_BREAKPOINT } from '@/lib/constants'
 // --- components
 import DrawerLinks from './DrawerLinks';
 // --- hooks
-import { useIsRootPage } from '@/lib/hooks/useIsRootPage';
+import { useIsRouteMatch } from '@/hooks/useIsRouteMatch';
 
 /**
  * Drawer Component with custom drawer functionality
@@ -42,7 +42,7 @@ const DrawerNavigation = () => {
     };
   }, []);
 
-  const isRoot = useIsRootPage();
+  const isRoot = useIsRouteMatch();
 
   return (
     <>
